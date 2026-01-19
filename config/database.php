@@ -3,7 +3,7 @@ class Database {
     private $host = "localhost";
     private $dbname = "athena";
     private $username = "root";
-    private $password = "123456789";
+    private $password = "monsef666";
     private $conn;
 
     public function connect() {
@@ -23,3 +23,4 @@ class Database {
 }
 
 class DatabaseException extends Exception {}
+$db = new Database();

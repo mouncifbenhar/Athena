@@ -1,3 +1,8 @@
+
+CREATE DATABASE test;
+use test
+
+
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
@@ -76,14 +81,7 @@ CREATE TABLE notifications (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE TABLE logs (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    action VARCHAR(100) NOT NULL,
-    details TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
-);
+
 
 CREATE TABLE issues (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -106,3 +104,11 @@ CREATE TABLE messages (
     FOREIGN KEY (sender_id) REFERENCES users(id),
     FOREIGN KEY (receiver_id) REFERENCES users(id)
 );
+
+
+
+--@block
+select users.username, tasks.title
+from tasks
+join users on tasks.assignee_id = users.id
+where tasks.status = 'in_progress';
